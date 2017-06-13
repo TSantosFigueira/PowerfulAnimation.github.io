@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title> Unity Powerful UI Animation </title>
+  <style>
+     div {
+          margin-left: 200px;
+          margin-right: 200px;
+      }
+  </style>
+</head>
+
+  <body>
+    <font face="Calibri">
+      <h1 align="center"> Unity Powerful UI Animation  </h1> 
+    </font>
+
+    <div>
+        
+        <p align="justify" font="Calibri" margin-left=40px> 
+           Um jogo não é constituído tão somente das mecânicas principais e assets bem elaborados, trata-se também da experiência do usuário, 
+           que envolve as cores, a disposição dos elementos de UI e também as animações utilizadas. Uma das mais suaves e elegantes é o efeito 
+           de fade-in/fade-out que pode ser criado diretamente no Unity. Exploremos, portanto, este último aspecto uma vez que o Unity já 
+           fornece uma maneira de criar e gerenciar animações: o <i>Animator</i>.
+        </p>
+        
+        <p align="justify" font="Calibri" margin-left=40px> 
+           Através do atalho Ctrl+6, o Unity fornece acesso à janela <i>Animation</i> também conhecido como o lugar onde a mágica acontece. Pode-se animar 
+           a movimentação de personagens, de inimigos, mas também elementos de interface. Analisemos a imagem abaixo:
+        </p>
+
+        <p align="center"> <img width="900" height="600" src="img01.png" alt="Screenshot 1"></p>
+       
+        <p align="justify" font="Calibri" margin-left=40px> 
+           Há alguns <i>canvases</i> sobrepostos, cada qual com a finalidade de mostra alguma tela pertencente ao menu inciar. Logo abaixo, há a aba 
+           <i>Animation</i> correspondente ao <i>Quit Canvas</i>, que mostra a tela de confirmação de saída, caso o jogador assim o deseje. Perceba que cada 
+           elemento pertencente ao canvas em questão deve ser adicionado como um item para ser animado.
+        </p>
+        
+        <p align="center"> <img width="900" height="600" src="img02.jpg" alt="Screenshot 2"></p>
+
+    <!--<p align="justify" font="Calibri">
+            <ul>
+                <li>Começamos a trabalhar com partículas, a fim de dar um charme maior aos menus do jogo. Nos projetos anteriores, essas telas eram extremamente estáticas;</li>
+                <li>Percebemos que houve um avanço em relação a parte artística. Dessa vez inspirados por arte irlandesa, os assets do jogo ficaram em harmonia e contribuíram para a atmosfera pretendida.</li>
+                <li>Pela primeira vez, conseguimos implementar níveis de dificuldade no projeto, a fim de expandir o fator de repetitividade.</li>
+            </ul>
+        </p> -->
+        
+        <p align="justify" font="Calibri" margin-left=40px> 
+          Olhemos então para o aspecto responsável por gerenciar as animações em si: o código. Os dois primeiros métodos garantem que haja a transição entre 
+          uma tela e outra até o final antes de a ordem do <i>canvases</i> mudarem (eles são sobrepostos, a fim de mostrar o desejado). 
+        </p>
+        
+        <p align="left"> <img src="img03.png" alt="Screenshot 3"></p>
+        <p align="left"> <img src="img04.png" alt="Screenshot 4"></p>
+
+        <p align="justify" font="Calibri" margin-left=40px> 
+         Esta é uma solução adequada e muito eficiente para quem está aprendendo, contudo, o problema é que esta abordagem, apesar de funcional, 
+         não é escalável, isto é, se quisermos adicionar ou remover elementos para a animação, cada um deve ser devidamente modificado na aba Animation. Eis a transição:
+        </p>
+        
+        <video width="1020" height="600" controls> <source src="video01.mp4" type="video/mp4"> </video>
+        
+        <p align="justify" font="Calibri" margin-left=40px> 
+        Então as principais dificuldades são: falta de escalabilidade e código verborrágico. Como, então, poderíamos deixar estas transições tão interessantes quanto estão, 
+        no entanto, mais facilmente adaptáveis. É muito simples, na verdade, basta utilizar a propriedade <i>Canvas Group</i>, do próprio Canvas. 
+        </p>
+        
+        <p align="center"> <img src="img05.png" alt="Screenshot 5"></p>
+        
+        <p align="justify" font="Calibri" margin-left=40px> 
+         Observe que a primeira propriedade é justamente o Alpha, responsável pelo efeito de fade-in/fade-out! Observemos o código: 
+        </p>
+        
+        <p align="left"> <img src="img06.png" alt="Screenshot 6"></p>
+        
+        <p align="justify" font="Calibri" margin-left=40px> 
+        Consideravelmente mais compreensível, aqui simplesmente há um método responsável por modificar o valor do Alpha do canvas em 1s (isto pode ser adaptado para 
+        qualquer outro tempo por meio de variável). Os outros métodos simplesmente fazem a transição ao desativar um canvas e outro, sem a necessidade de gerenciar a 
+        ordem onde cada qual aparece no layer. A outra vantagem e talvez a maior de todas é que não há envolvimento com o Animator, logo todos os objetos filhos do 
+        canvas sofrem automaticamente os efeitos do pai.  Abaixo a animação otimizada aplicada em outro contexto de jogo:
+        </p>
+        
+        <video width="1020" height="600" controls> <source src="video02.mp4" type="video/mp4"> </video>
+        
+        <p align="justify" font="Calibri">
+            Descubra um pouco mais nas fontes abaixo:
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=mT_b1ExuVbs">Mecanin - Animating UI - Unity 5</a></li>
+                <li><a href="https://docs.unity3d.com/ScriptReference/Canvas.html">Unity Documentation - Canvas</a></li>
+                <li><a href="https://1drv.ms/u/s!Aq6y2qxsxVSlicsVO5g1gSQnSwh5pA">Download - About Displayer </a></li>
+                <li><a href="https://github.com/TSantosFigueira/MatchGame">Repositório - Animação com Animator </a></li>
+                <li><a href="https://github.com/TSantosFigueira/Western_Zombies">Repositório - Animação otimizada </a></li>
+            </ul>
+        </p>
+        
+    </div>
+  </body>
+</html>
